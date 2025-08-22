@@ -28,7 +28,7 @@ const Navbar = () => {
 	return (
 		<div className="fixed top-0 flex justify-between px-10 py-4 items-center border-b border-neutral-200 inset-x-0 backdrop-blur-md z-20 h-20">
 			<div>
-				<h1 className="font-vachya font-bold text-4xl">Vachya</h1>
+				<Link to='/' className="font-vachya font-bold text-4xl">Vachya</Link>
 			</div>
 			<div className="w-md ">
 				<input
