@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
 import { BiLike } from "react-icons/bi";
@@ -6,7 +6,7 @@ import { IoMdShare } from "react-icons/io";
 import { FaPeopleGroup } from "react-icons/fa6";
 
 const Maincontent = () => {
-	const debates = [
+	const [debates, setDebates] = useState([
 		{
 			name: "Aarav Sharma",
 			question:
@@ -84,8 +84,30 @@ const Maincontent = () => {
 			expiry: 2,
 			topic: "Environment",
 		},
-	];
+	]);
 
+	const [question, setQuestion] = useState("");
+	const [category, setCategory] = useState("");
+
+	const handleChange = (e) => {
+		setQuestion(e.target.value);
+	};
+
+	const handleSelect = (e) => {
+		setCategory(e.target.value);
+	};
+
+	function addNewDebate(ques, topic) {
+		const newDebate = {
+			name: "Anonymous",
+			question: ques,
+			likes: 0,
+			expiry: 3,
+			topic: topic,
+		};
+
+		setDebates([newDebate, ...debates]);
+	}
 	return (
 		<div className="m-5 max-h-screen flex flex-col gap-5 ">
 			<div className="w-full flex gap-5 border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -94,26 +116,30 @@ const Maincontent = () => {
 				</Link>
 				<div className="flex flex-col gap-5">
 					<textarea
-						typeof="text"
+						onChange={handleChange}
 						placeholder="What are Your thoughts?"
 						className="p-2 bg-gray-50 w-140 h-25 border border-gray-200 focus:ring-1 rounded-md  focus:ring-gray-800"
 					/>
 					<div className="flex justify-between font-medium">
 						<div className="flex gap-2 items-center">
 							<label>Category:</label>
-							<select className="border border-gray-200 rounded-md px-2 py-1 focus:ring-1 focus:ring-gray-700">
-								<option>Tech</option>
-								<option>Politics</option>
-								<option>Education</option>
-								<option>Society</option>
-								<option>Environment</option>
-								<option>Sports</option>
-								<option>Philosophy</option>
-								<option>Global Issues</option>
-								<option>Health</option>
+							<select
+								onChange={handleSelect}
+								className="border border-gray-200 rounded-md px-2 py-1 focus:ring-1 focus:ring-gray-700">
+								<option value="Tech">Tech</option>
+								<option value="Politics">Politics</option>
+								<option value="Education">Education</option>
+								<option value="Society">Society</option>
+								<option value="Environment">Environment</option>
+								<option value="Sports">Sports</option>
+								<option value="Philosophy">Philosophy</option>
+								<option value="Global Issues">Global Issues</option>
+								<option value="Health">Health</option>
 							</select>
 						</div>
-						<button className="px-6 py-2 rounded-3xl text-white bg-gray-800 cursor-pointer ">
+						<button
+							onClick={() => addNewDebate(question, category)}
+							className="px-6 py-2 rounded-3xl text-white bg-gray-800 cursor-pointer ">
 							Post
 						</button>
 					</div>
@@ -143,11 +169,16 @@ const Maincontent = () => {
 									<IoMdShare />
 									<p>Share</p>
 								</div>
-								<Link to='/debate' state={{debate}} className="flex font-medium items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 text-white cursor-pointer">
+								<Link
+									to="/debate"
+									state={{ debate }}
+									className="flex font-medium items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 text-white cursor-pointer">
 									<FaPeopleGroup />
 									<p>Join Debate</p>
-								</Link >
-								<div className="text-sm border rounded-2xl px-2 bg-gray-100 text-gray-600 ">{debate.topic}</div>
+								</Link>
+								<div className="text-sm border rounded-2xl px-2 bg-gray-100 text-gray-600 ">
+									{debate.topic}
+								</div>
 							</div>
 						</div>
 					);
