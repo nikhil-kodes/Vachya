@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import NotFound from "./components/Not-Found";
-import Debate from "./pages/debate";
+import Debate from "./pages/Debate";
 import Maincontent from "./components/Maincontent";
 import Rightsidebar from "./components/Rightsidebar";
 import LeftSideBar from "./components/LeftSideBar";
