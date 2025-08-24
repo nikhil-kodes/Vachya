@@ -8,6 +8,8 @@ import { MdRssFeed } from "react-icons/md";
 import { FaRegChartBar } from "react-icons/fa";
 import { CiSettings } from "react-icons/ci";
 import { FaRegBell } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
+
 
 const LeftSideBar = () => {
 	const options = [
@@ -100,19 +102,19 @@ const LeftSideBar = () => {
 	];
 
 	return (
-		<div className="sticky top-0 overflow-y-hidden h-screen scrollbar-hover border border-neutral-200 rounded-lg m-5 flex flex-col gap-2 w-full p-4 bg-white shadow-md">
+		<div className="sticky top-0 overflow-y-hidden h-screen scrollbar-hover border border-neutral-200 md:rounded-lg md:m-5 flex flex-col gap-2 w-full p-4 bg-white shadow-md">
 			{options.map((option) => {
 				return (
 					<NavLink
 						className={({ isActive }) =>
 							isActive
-								? "font-medium px-2 py-1 flex items-center gap-2 bg-gray-800 text-white rounded-md text-md"
-								: "font-medium px-2 py-1 flex items-center gap-2 w-full rounded-md hover:bg-gray-100 transition-all duration-300 text-md"
+								? "font-medium p-1 md:px-2 md:py-1 flex items-center gap-2 bg-gray-800 text-white rounded-sm md:rounded-md text-sm md:text-md"
+								: "font-medium md:px-2 md:py-1 flex items-center gap-2 w-full rounded-sm md:rounded-md hover:bg-gray-100 transition-all duration-300 text-sm md:text-md"
 						}
 						key={option.href}
 						to={option.href}>
 						{option.title.icon}
-						{option.title.body}
+						<p className="hidden md:flex">{option.title.body}</p>
 					</NavLink>
 				);
 			})}

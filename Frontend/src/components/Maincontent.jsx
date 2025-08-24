@@ -114,11 +114,11 @@ const Maincontent = () => {
 				<Link to="/profile">
 					<BsPerson className="rounded-full size-10 p-2 bg-gray-300" />
 				</Link>
-				<div className="flex flex-col gap-5">
+				<div className="flex flex-1 flex-col gap-5">
 					<textarea
 						onChange={handleChange}
 						placeholder="What are Your thoughts?"
-						className="p-2 bg-gray-50 w-140 h-25 border border-gray-200 focus:ring-1 rounded-md  focus:ring-gray-800"
+						className="p-2 bg-gray-50 flex-1 h-25 border border-gray-200 focus:ring-1 rounded-md  focus:ring-gray-800"
 					/>
 					<div className="flex justify-between font-medium">
 						<div className="flex gap-2 items-center">

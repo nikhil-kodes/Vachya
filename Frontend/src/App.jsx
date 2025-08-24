@@ -13,7 +13,7 @@ const App = () => {
 			<div className="h-screen flex flex-col gap-5">
 				<Navbar />
 				<div className="flex mt-20 gap-5">
-					<div className="w-[20%] sticky top-20 self-start">
+					<div className="w-[8%] md:w-[20%] sticky top-20 self-start">
 						<LeftSideBar />
 					</div>
 			
@@ -22,11 +22,11 @@ const App = () => {
 								path="/"
 								element={
 									<>
-										<div className="w-[70%] overflow-y-auto">
+										<div className="flex-1 overflow-y-auto">
 											<Maincontent />
 										</div>
 
-										<div className="w-[25%] sticky top-20 self-start">
+										<div className="w-[25%] hidden md:flex sticky top-20 self-start">
 											<Rightsidebar />
 										</div>
 									</>
